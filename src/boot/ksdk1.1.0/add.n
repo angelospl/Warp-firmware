@@ -1,0 +1,10 @@
+addMod : module ()
+{
+	add : function (a : int32, b : int32) -> (out : int32);
+}
+
+
+add : function (a : int32, b : int32) -> (out : int32) =
+{
+	return (out : a + b);
+}
