@@ -1378,6 +1378,8 @@ warpWaitKey(void)
 	return rttKey;
 }
 
+int add(int a,int b);
+
 int
 main(void)
 {
@@ -1396,6 +1398,8 @@ main(void)
 	power_manager_user_config_t		warpPowerModeVlls3Config;
 	power_manager_user_config_t		warpPowerModeRunConfig;
 
+
+	add(0,1);
 	/*
 	 *	We use this as a template later below and change the .mode fields for the different other modes.
 	 */
