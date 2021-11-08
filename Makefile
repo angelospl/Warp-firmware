@@ -11,6 +11,8 @@ warp:
 	cp src/boot/ksdk1.1.0/SEGGER*					build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/config.h					build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/boot.c					build/ksdk1.1/work/demos/Warp/src/
+	cp src/boot/ksdk1.1.0/add.n.obj					build/ksdk1.1/work/demos/Warp/src/
+	cp src/boot/ksdk1.1.0/add.c.obj					build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/errstrs*					build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/powermodes.c				build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/warp.h					build/ksdk1.1/work/demos/Warp/src/
