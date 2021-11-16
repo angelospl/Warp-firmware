@@ -199,6 +199,58 @@ configureSensorBME680(uint8_t payloadCtrl_Hum, uint8_t payloadCtrl_Meas, uint8_t
 	return (status1 | status2 | status3 | status4);
 }
 
+// uint16_t
+// readI2CBuffer()
+// {
+// 	return deviceBME680State.i2cBuffer[0];
+// }
+
+// void
+// noisyWarpPrintRawADC(uint32_t rawADCValue)
+// {
+// 	warpPrint(" %u, ",rawADCValue);
+// }
+
+// void
+// noisyWarpPrintErrorLine()
+// {
+// 	warpPrint(" ----,");
+// }
+
+// void
+// noisyWarpPrintHex(uint16_t msb, uint16_t lsb, uint16_t xlsb)
+// {
+// 	warpPrint(" 0x%02x 0x%02x 0x%02x,",msb,lsb,xlsb);
+// }
+
+int32_t fib_gen(int32_t);
+
+void
+printRandomFibonacci()
+{
+	uint16_t	readSensorRegisterValueMSB;
+	uint32_t	unsignedRawAdcValue;
+	WarpStatus	triggerStatus, i2cReadStatusMSB;
+
+	warpScaleSupplyVoltage(deviceBME680State.operatingVoltageMillivolts);
+	
+	triggerStatus = writeSensorRegisterBME680(kWarpSensorConfigurationRegisterBME680Ctrl_Meas,
+							0b00100101);
+	
+	i2cReadStatusMSB = readSensorRegisterBME680(kWarpSensorOutputRegisterBME680press_msb, 1);
+	readSensorRegisterValueMSB = deviceBME680State.i2cBuffer[0];
+
+	if (triggerStatus != kWarpStatusOK || i2cReadStatusMSB != kWarpStatusOK)
+	{
+		warpPrint(" ----,");
+	}
+	else
+	{
+		int n = (int32_t) readSensorRegisterValueMSB % 40;
+		int fibRet = fib_gen(n);
+		warpPrint("%u : %d ",n,fibRet);
+	}
+}
 
 void
 printSensorDataBME680(bool hexModeFlag)

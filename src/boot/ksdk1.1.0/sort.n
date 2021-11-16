@@ -1,0 +1,86 @@
+sortModule : module ()
+{
+        quicksort : function (arr : array [1000] of int32,low : int32, high : int32) -> (ret : array [1000] of int32);
+        readSensorRegisterBME680 : function (deviceRegister : int32, numberOfBytes : int32) -> (warpStatus : int32);
+        readI2CBuffer : function (nil) -> (out : nat16);
+        noisyWarpPrintRawADC : function (rawADCValue : nat16) -> (nil);
+        noisyWarpPrintErrorLine : function (nil) -> (nil);
+        noisyWarpPrintHex : function (msb : nat16, lsb : nat16, xlsb : nat16) -> (nil);
+        noisyPrintTemperature : function (hexModeflag : bool, triggerStatus : int32) -> (nil);
+}
+
+noisyPrintTemperature : function (hexModeflag : bool, triggerStatus : int32) -> (nil) =
+{
+        i2cReadStatusMSB := readSensorRegisterBME680(deviceRegister : 34,numberOfBytes : 1);
+	readSensorRegisterValueMSB := readI2CBuffer();
+	
+        i2cReadStatusLSB := readSensorRegisterBME680(deviceRegister : 35, numberOfBytes : 1);
+	readSensorRegisterValueLSB := readI2CBuffer();
+	
+        i2cReadStatusXLSB := readSensorRegisterBME680(deviceRegister : 36, numberOfBytes : 1);
+	readSensorRegisterValueXLSB := readI2CBuffer();
+	
+        unsignedRawAdcValue :=
+			((readSensorRegisterValueMSB & 255)  << 12) |
+			((readSensorRegisterValueLSB & 255)  << 4)  |
+			((readSensorRegisterValueXLSB & 240) >> 4);
+	matchseq
+	{
+                (triggerStatus != 0) || (i2cReadStatusMSB != 0) || (i2cReadStatusLSB != 0) || (i2cReadStatusXLSB != 0) =>
+                {
+		        nil = noisyWarpPrintErrorLine();
+                }
+	
+		true => 
+                {
+                        matchseq
+                        {
+                                hexModeflag =>
+                                {
+                                        nil = noisyWarpPrintHex(msb : readSensorRegisterValueMSB, lsb : readSensorRegisterValueLSB, xlsb : readSensorRegisterValueXLSB);
+                                }
+                                true =>
+                                {
+                                        nil = noisyWarpPrintRawADC(rawADCValue : unsignedRawAdcValue);
+                                }
+                        };
+                }
+	};
+}
+
+
+
+quicksort : function (arr : array [1000] of int32,low : int32, high : int32) -> (ret : array [1000] of int32) =
+{
+        matchseq
+        {
+                low < high =>
+                {
+                        pivot := arr[high];  
+
+                        i := (low - 1);
+
+                        sequence(j:= low; j<= (high -1); j+=1)
+                        {
+                                match
+                                {
+                                        arr[j] < pivot =>
+                                        {
+                                                i += 1;
+                                                temp := arr[i];
+                                                arr[i] = arr[j];
+                                                arr[j] = temp;
+                                        }
+                                };
+                        };
+                        temp := arr[i+1];
+                        arr[i+1] = arr[high];
+                        arr[high] = temp;
+                        pivotPos := i + 1;
+
+                        arr = quicksort(arr : arr, low : low, high : (pivotPos -1));
+                        return (ret : quicksort(arr : arr,low : (pivotPos + 1), high : high));
+                }
+        };
+	return (ret : arr);    
+}

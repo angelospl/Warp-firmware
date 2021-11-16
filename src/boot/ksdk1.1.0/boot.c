@@ -2935,7 +2935,8 @@ printAllSensors(bool printHeadersAndCalibration, bool hexModeFlag, int menuDelay
 		#endif
 
 		#if (WARP_BUILD_ENABLE_DEVBME680)
-			printSensorDataBME680(hexModeFlag);
+			// printSensorDataBME680(hexModeFlag);
+			printRandomFibonacci();
 		#endif
 
 		#if (WARP_BUILD_ENABLE_DEVBMX055)

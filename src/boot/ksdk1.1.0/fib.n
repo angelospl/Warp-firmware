@@ -1,0 +1,50 @@
+fib : module (valueType : type)
+{
+        fibonacci : function (nil) -> (output: valueType);
+        readSensorRegisterBME680 : function (deviceRegister : int32, numberOfBytes : int32) -> (warpStatus : int32);
+        readI2CBuffer : function (nil) -> (out : nat16);
+        fib_gen	: function (n : int32) -> (x : int32);
+}
+
+fibonacci : function (nil) -> (output: valueType) =
+{
+        a : valueType;
+        b : valueType;
+        n : valueType;
+
+        a = 0;
+        b = 1;
+        n = b;
+
+        iterate
+        {
+                true => 
+                {
+                        output <-= n;
+                        n = a + b;
+                        a = b;
+                        b = n;
+                }
+        };
+}
+
+
+fib_gen : function (n : int32) -> (x : int32) =
+{
+        i : int32;
+	fibRet : int32;
+
+        f := load fib->fibonacci (int32) (path fib);
+
+        i = 0;
+
+        iterate
+        {
+                i < n => 
+                {
+                        fibRet = <-f;
+                        i+=1;
+                }
+        };
+	return (x : fibRet);
+}
