@@ -52,7 +52,7 @@
  *	build variant above, we currently require users wanting to build for the
  *	KL03 to manually set this here.
  */
-#define		WARP_BUILD_ENABLE_FRDMKL03			0
+#define		WARP_BUILD_ENABLE_FRDMKL03			1
 
 /*
  *	Force the required configuration if WARP_BUILD_ENABLE_GLAUX_VARIANT is set
@@ -85,7 +85,7 @@
 	#define		WARP_BUILD_ENABLE_DEVAS7262		0
 	#define		WARP_BUILD_ENABLE_DEVAS7263		0
 	#define		WARP_BUILD_ENABLE_DEVBGX		0
-	#define		WARP_BUILD_ENABLE_DEVBME680		0
+	#define		WARP_BUILD_ENABLE_DEVBME680		1
 	#define		WARP_BUILD_ENABLE_DEVBMX055		0
 	#define		WARP_BUILD_ENABLE_DEVCCS811		0
 	#define		WARP_BUILD_ENABLE_DEVHDC1000		0
