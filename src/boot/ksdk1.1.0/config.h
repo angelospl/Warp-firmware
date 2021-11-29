@@ -53,7 +53,7 @@
  *	KL03 to manually set this here.
  */
 #define		WARP_BUILD_ENABLE_FRDMKL03			0
-#define		NOISY_TEST					0
+#define		NOISY_TEST					1
 
 /*
  *	Force the required configuration if WARP_BUILD_ENABLE_GLAUX_VARIANT is set

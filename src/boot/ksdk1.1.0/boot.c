@@ -2913,7 +2913,7 @@ printAllSensors(bool printHeadersAndCalibration, bool hexModeFlag, int menuDelay
 	}
 
 	#if (NOISY_TEST)
-		lowPassFilter61();
+		lowPassFilter();
 	#else
 	do
 	{

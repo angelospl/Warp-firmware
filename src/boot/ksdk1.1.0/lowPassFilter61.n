@@ -89,7 +89,7 @@ lowPassFilterOrder61 : function (input : array [100] of float32)
 	};
 }
 
-lowPassFilter61 : function (nil) -> (nil) =
+lowPassFilter : function (nil) -> (nil) =
 {
 	i,k : int32;
 	inputArr : array [100] of float32;
