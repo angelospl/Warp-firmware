@@ -84,10 +84,7 @@ ELSEIF(CMAKE_BUILD_TYPE MATCHES Release)
 ENDIF()
 
 # ADD_EXECUTABLE
-ADD_EXECUTABLE(Warp 
-    "${ProjDirPath}/../../src/add.n.obj"
-    "${ProjDirPath}/../../src/fib.n.obj"
-    "${ProjDirPath}/../../src/sort.n.obj"
+ADD_EXECUTABLE(Warp
     "${ProjDirPath}/../../../../platform/utilities/src/fsl_misc_utilities.c"
     "${ProjDirPath}/../../../../platform/startup/MKL03Z4/gcc/startup_MKL03Z4.S"
     "${ProjDirPath}/../../src/boot.c"
@@ -114,6 +111,9 @@ ADD_EXECUTABLE(Warp
     "${ProjDirPath}/../../src/devBGX.c"
     "${ProjDirPath}/../../src/devAS7262.c"
     "${ProjDirPath}/../../src/devAS7263.c"
+    "${ProjDirPath}/../../src/noisyLib.c"
+#    "${ProjDirPath}/../../src/lowPassFilter61.c"
+    "${ProjDirPath}/../../src/lowPassFilter61.n.obj"
 #   "${ProjDirPath}/../../src/devMAX11300.c
     "${ProjDirPath}/../../src/SEGGER_RTT.c"
     "${ProjDirPath}/../../src/SEGGER_RTT_printf.c"

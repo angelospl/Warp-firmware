@@ -68,6 +68,10 @@
 #define							kWarpConstantStringErrorSanity		"\rSanity check failed!"
 
 
+#if (NOISY_TEST)
+	#include "noisyTest.h"
+#endif
+
 #if (WARP_BUILD_ENABLE_DEVADXL362)
 	#include "devADXL362.h"
 	volatile WarpSPIDeviceState			deviceADXL362State;
@@ -1378,7 +1382,6 @@ warpWaitKey(void)
 	return rttKey;
 }
 
-int add(int a,int b);
 
 int
 main(void)
@@ -1399,7 +1402,6 @@ main(void)
 	power_manager_user_config_t		warpPowerModeRunConfig;
 
 
-	add(0,1);
 	/*
 	 *	We use this as a template later below and change the .mode fields for the different other modes.
 	 */
@@ -2910,6 +2912,9 @@ printAllSensors(bool printHeadersAndCalibration, bool hexModeFlag, int menuDelay
 		warpPrint("\n\n");
 	}
 
+	#if (NOISY_TEST)
+		lowPassFilter61();
+	#else
 	do
 	{
 		warpPrint("%12u, %12d, %6d,\t\t", readingCount, RTC->TSR, RTC->TPR);
@@ -2962,6 +2967,7 @@ printAllSensors(bool printHeadersAndCalibration, bool hexModeFlag, int menuDelay
 
 		readingCount++;
 	} while (loopForever);
+	#endif
 }
 
 
