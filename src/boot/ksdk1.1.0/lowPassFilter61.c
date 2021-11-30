@@ -166,7 +166,7 @@ lowPassFilter()
 		sig[i] = (float) getXAccelerationMeasurement();
 	}
 
-	lowPassFilter(sig,filtered,SIZE);
+	lowPassFilterOrder183(sig,filtered,SIZE);
 
 	for (int i = 0; i < SIZE; i++)
 	{
