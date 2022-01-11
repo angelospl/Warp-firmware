@@ -19,6 +19,7 @@ warp:
 	cp src/boot/ksdk1.1.0/noisyLib.*				build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/noisyTest.h				build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/lowPassFilter61.c				build/ksdk1.1/work/demos/Warp/src/
+	cp src/boot/ksdk1.1.0/lowPassFilter183.c				build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/lowPassFilter61.n.obj				build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/lowPassFilter183.n.obj				build/ksdk1.1/work/demos/Warp/src/
 	cp src/boot/ksdk1.1.0/fib.n.obj					build/ksdk1.1/work/demos/Warp/src/

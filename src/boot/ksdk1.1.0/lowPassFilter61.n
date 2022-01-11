@@ -6,7 +6,7 @@ Filter : module ()
         				-> (output : array [100] of float32);
 	getXAccelerationMeasurement : function (nil) -> (ret : int16);
 	noisyWarpPrintFloat32 : function (x : float32) -> (nil);
-        lowPassFilter61 : function (nil) -> (nil);
+        lowPassFilter: function (nil) -> (nil);
 }
 
 # Implementation of a filter using channels and coroutines
