@@ -104,6 +104,8 @@ lowPassFilter()
 		sig[i] = (float) getXAccelerationMeasurement();
 	}
 
+	lowPassFilterOrder61(sig,filtered,SIZE);
+
 	for (int i = 0; i < SIZE; i++)
 	{
 		// printf("%lf\n",filtered[i]);
