@@ -242,7 +242,7 @@ getXAccelerationMeasurement()
 		*/
 		readSensorRegisterValueCombined = (readSensorRegisterValueCombined ^ (1 << 13)) - (1 << 13);
 
-		if (i2cReadStatus != kWarpStatusOK)
+		if (i2cReadStatus == kWarpStatusOK)
 		{
 			break;
 		}
