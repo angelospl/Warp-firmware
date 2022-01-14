@@ -36,10 +36,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 #include <stdlib.h>
+#include "config.h"
+#include "warp.h"
+#include "devMMA8451Q.h"
 #include "noisyLib.h"
 #define SIZE 5000
-
-signed short getXAccelerationMeasurement();
 
 /*
 	Low-pass filter from MATLAB filterDesigner.
@@ -95,6 +96,8 @@ lowPassFilterOrder61(float x[], float y[], const int N)
 void
 lowPassFilter()
 {
+	warpPrint("This never prints!\n");
+
 	float sig[SIZE] = {0};
 	float filtered[SIZE] = {0};
 

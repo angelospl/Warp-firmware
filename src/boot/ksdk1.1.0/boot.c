@@ -2913,7 +2913,9 @@ printAllSensors(bool printHeadersAndCalibration, bool hexModeFlag, int menuDelay
 	}
 
 	#if (NOISY_TEST)
+		warpPrint("Trying to call lowPassFilter()...\n");
 		lowPassFilter();
+		warpPrint("Returned from lowPassFilter().\n");
 	#else
 	do
 	{
