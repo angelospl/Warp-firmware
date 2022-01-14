@@ -36,10 +36,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 #include <stdlib.h>
+#include "config.h"
+#include "warp.h"
+#include "devMMA8451Q.h"
 #include "noisyLib.h"
-#define SIZE 5000
-
-signed short getXAccelerationMeasurement();
+#define SIZE 5
 
 void
 lowPassFilterOrder183(float sig [],float sig_filt [], const int N)
@@ -106,6 +107,7 @@ lowPassFilterOrder183(float sig [],float sig_filt [], const int N)
 void
 lowPassFilter()
 {
+	warpPrint("lowPassFilterOrder183 intro\n");
 	float sig[SIZE] = {0};
 	float filtered[SIZE] = {0};
 

@@ -40,7 +40,7 @@
 #include "warp.h"
 #include "devMMA8451Q.h"
 #include "noisyLib.h"
-#define SIZE 5000
+#define SIZE 5
 
 /*
 	Low-pass filter from MATLAB filterDesigner.
