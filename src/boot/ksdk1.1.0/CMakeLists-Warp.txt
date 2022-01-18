@@ -115,7 +115,7 @@ ADD_EXECUTABLE(Warp
     "${ProjDirPath}/../../src/lowPassFilter61.c"
 #    "${ProjDirPath}/../../src/lowPassFilter61.n.obj"
 #    "${ProjDirPath}/../../src/lowPassFilter183.n.obj"
-#    "${ProjDirPath}/../../src/lowPassFilter183.c"
+    "${ProjDirPath}/../../src/lowPassFilter183.c"
 #   "${ProjDirPath}/../../src/devMAX11300.c
     "${ProjDirPath}/../../src/SEGGER_RTT.c"
     "${ProjDirPath}/../../src/SEGGER_RTT_printf.c"
