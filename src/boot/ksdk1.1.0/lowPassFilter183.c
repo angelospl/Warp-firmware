@@ -40,7 +40,7 @@
 #include "warp.h"
 #include "devMMA8451Q.h"
 #include "noisyLib.h"
-#define SIZE 200
+#define SIZE 5
 #define DELAYLOW 91
 #define LENLOW 183
 
