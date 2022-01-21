@@ -85,16 +85,17 @@ lowPassFilterOrder183(float sig [],float sig_filt [], const int N)
 void
 lowPassFilter()
 {
-	warpPrint("lowPassFilterOrder183 intro\n");
+	warpPrint("lowPassFilterOrder183 prelude\n");
 	float sig[SIZE] = {0};
 	float filtered[SIZE] = {0};
 
 	for (int i = 0; i < SIZE; i++)
 	{
 		// scanf("%*lf,%lf,%*lf",&sig[i]);
+		warpPrint("getXAccelerationMeasurement %d\n", i);
 		sig[i] = (float) getXAccelerationMeasurement();
 	}
-
+	warpPrint("lowPassFilterOrder183: start\n");
 	lowPassFilterOrder183(sig,filtered,SIZE);
 
 	for (int i = 0; i < SIZE; i++)

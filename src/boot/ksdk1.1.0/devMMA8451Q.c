@@ -200,6 +200,7 @@ readSensorRegisterMMA8451Q(uint8_t deviceRegister, int numberOfBytes)
 
 	if (status != kStatus_I2C_Success)
 	{
+		warpPrint("i2c error: %d\n", status);
 		return kWarpStatusDeviceCommunicationFailed;
 	}
 
@@ -233,6 +234,13 @@ getXAccelerationMeasurement()
 	{
 
 		i2cReadStatus = readSensorRegisterMMA8451Q(kWarpSensorOutputRegisterMMA8451QOUT_X_MSB, 2 /* numberOfBytes */);
+		if (i2cReadStatus != kWarpStatusOK)
+		{
+			warpPrint("I2C Communication failed: %d\n", i2cReadStatus);
+			OSA_TimeDelay(50);
+			continue;
+		}
+		
 		readSensorRegisterValueMSB = deviceMMA8451QState.i2cBuffer[0];
 		readSensorRegisterValueLSB = deviceMMA8451QState.i2cBuffer[1];
 		readSensorRegisterValueCombined = ((readSensorRegisterValueMSB & 0xFF) << 6) | (readSensorRegisterValueLSB >> 2);
